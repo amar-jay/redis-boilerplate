@@ -13,4 +13,18 @@ a {
 
 * {
   box-sizing: border-box;
+  border: none;
 }
+
+
+input {
+  background-color: #aaa;
+  font-size: 20px;
+}
+
+input,
+button {
+  transition: cubic-bezier(0.55, 0.055, 0.675, 0.19) 500ms;
+
+}
+
