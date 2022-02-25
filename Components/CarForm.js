@@ -5,9 +5,10 @@ export default function CarForm() {
 const handleForm = async (event) => {
     event.preventDefault();
 
+    // form data -> object
     const form = new FormData(event.target);// clean Form
 	const formData = Object.fromEntries(form.entries());
-    console.log(formData);
+    console.log("form Data", formData);
 
 	const res = await fetch("/api/car", {
 		headers: {
@@ -17,12 +18,24 @@ const handleForm = async (event) => {
 		method: 'POST',
 	});
 
+  //  console.log("Response", res);
+
+    if (res.status === 200) {
+        alert("Car added");
+    } else if (res.status === 400) {
+        alert("Bad request");
+    } else if (res.status === 500) {
+        alert("Internal server error!!");
+    } else {
+        alert(" I don't know what the fuck is going on but it is an Error. ");
+    }
+
     const result = await res.json();
 
 
-    console.log(result);
+    console.log("response", result);
 
-	console.log(res.message);
+//	console.log("response message", res.message);
 
 }
     return (
